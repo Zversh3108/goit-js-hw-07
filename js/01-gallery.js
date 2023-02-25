@@ -38,7 +38,7 @@ function onImageClick(evt) {
       },
       onClose: () => {
         window.removeEventListener("keydown", onCloseModal);
-        console.log("sdfsdf");
+        console.log("removeListener");
       },
     }
   );
