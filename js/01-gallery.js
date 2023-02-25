@@ -25,6 +25,7 @@ gallery.addEventListener("click", onImageClick);
 
 function onImageClick(evt) {
   evt.preventDefault();
+  window.addEventListener("keydown", onCloseModal);
   const isImageEl = evt.target.classList.contains("gallery__image");
   if (!isImageEl) {
     return;
@@ -33,9 +34,10 @@ function onImageClick(evt) {
     `<img src="${evt.target.dataset.source}" width="800" height="600">`
   );
   instance.show();
-  gallery.addEventListener("keydown", (evt) => {
+  function onCloseModal(evt) {
+    window.removeEventListener("keydown", onImageClick);
     if (evt.code === "Escape") {
       instance.close();
     }
-  });
+  }
 }
